@@ -1,19 +1,24 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { registerRootComponent } from "expo";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import "./page/init"; //loading  and  register components
+
+import { getTypes } from "./page/decorator";
+
+
+registerRootComponent(
+  createAppContainer(
+    createSwitchNavigator(
+      getTypes().reduce(
+        (screens, { Component, name }) => ({
+          ...screens,
+          [name]: {
+            screen: Component,
+          },
+        }),
+        {}
+      )
+    )
+  )
+);
