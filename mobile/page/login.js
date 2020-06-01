@@ -9,6 +9,25 @@ import texts from "../const/texts";
 
 import registerPage from "./decorator";
 
+
+/*
+
+// usuário existe
+// exemplo: /login
+const data1_Test = {
+    status:true,
+    msg:'token',
+    id:123,
+}
+
+// exemplo: /users/aurelio 
+const data2_Test = {
+    perfil:'analista' | 'cliente' | 'admin',
+    emal:'aurelio.gualda@gmail.com'
+}
+
+*/
+
 function Login({ navigation }) {
   const [user, setUser] = useState("");
   const [password, setPass] = useState("");
